@@ -28,6 +28,7 @@ var HardMode = {};
     * Gets all empty spaces on the board, then checks each winning combination.
     * If two empty spaces are found, move on to the next combination.
     * If one empty space is found and the other two spaces are occupied by different markers, move on.
+    * If no empty spaces are found, move on to the next combination.
     * If one empty space is found and the other two spaces are occupied by the same marker, return the empty Id, since
     * that is the winning move - either for the computer to win now, or to block the player from winning on their next
     * turn.
@@ -38,7 +39,6 @@ var HardMode = {};
         });
         var markerById = {};
         for (var i = 0; i < WINNING_COMBINATIONS.length; i++) {
-            var occupiedCount = 0;
             var firstOccupiedSpaceMarker = null;
             var possibleWinningId = null;
             var winningCombination = WINNING_COMBINATIONS[i];
@@ -55,15 +55,14 @@ var HardMode = {};
                         occupyingMarker = document.getElementById(spaceId).className;
                         markerById[spaceId] = occupyingMarker;
                     }
-                    if (occupiedCount === 0) {
+                    if (firstOccupiedSpaceMarker === null) {
                         firstOccupiedSpaceMarker = occupyingMarker;
-                        occupiedCount = 1;
-                    } else if (firstOccupiedSpaceMarker === occupyingMarker) {
-                        occupiedCount = 2;
+                    } else if (firstOccupiedSpaceMarker !== occupyingMarker) {
+                        break;
                     }
                 }
             }
-            if (occupiedCount === 2 && possibleWinningId) {
+            if (possibleWinningId) {
                 return possibleWinningId;
             }
         }

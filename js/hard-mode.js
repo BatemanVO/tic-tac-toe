@@ -79,7 +79,7 @@ var HardMode = {};
     */
     HardMode.computerMove = function() {
         var winningId = HardMode.getWinningId();
-        if (winningId) {
+        if (winningId !== undefined) {
             return document.getElementById(winningId);
         }
 

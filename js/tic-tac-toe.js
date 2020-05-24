@@ -1,3 +1,14 @@
+/******************************************************************************************************************
+* @description          Primary file used by the index.html page to handle the logic for the Tic-Tac-Toe game.
+* @createdDate          05/21/2020
+* @author               Aggie Wheeler Bateman
+*******************************************************************************************************************
+* Modification Log
+* Developer name        Date                Description of changes
+* Steven Bateman        05/23/2020          Modified the computerMove function to check if the HardMode class's
+*                                           isEnabled property is true and, if so, use that class's computerMove
+*                                           logic to determine where to place the computer's marker
+******************************************************************************************************************/
 //global variables to use in multiple functions
 var userMarker;
 var isComputerTurn = false;

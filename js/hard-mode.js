@@ -1,8 +1,13 @@
-/**
-* Class that can be optionally enabled to override the choice of which element to choose in the tic-tac-toe.js file's
-* computerMove method. Written using only pre-ES6 features to help junior developers learning JavaScript have an
-* easier time reading.
-*/
+/******************************************************************************************************************
+* @description          Class that can be optionally enabled to override the choice of which element to choose in the
+*                       tic-tac-toe.js file's computerMove method. Written using only pre-ES6 features to help junior
+*                       developers learning JavaScript have an easier time reading.
+* @createdDate          05/23/2020
+* @author               Steven Bateman
+*******************************************************************************************************************
+* Modification Log
+* Developer name        Date                Description of changes
+******************************************************************************************************************/
 var HardMode = {};
 (function() {
     var EMPTY_SPACE_CLASS = 'unmarked';

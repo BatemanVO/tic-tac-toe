@@ -1,3 +1,11 @@
+/******************************************************************************************************************
+* @description          Stylesheet used for the index.html page
+* @createdDate          05/21/2020
+* @author               Aggie Wheeler Bateman
+*******************************************************************************************************************
+* Modification Log
+* Developer name        Date                Description of changes
+******************************************************************************************************************/
 body {
     display: grid;
     grid-template-rows: [first-body-row] 7.8125rem [second-body-row] 7.8125rem [third-body-row] 0.5fr [fourth-body-row] 0.5fr [fifth-body-row] 6.25rem [sixth-body-row] 2.5rem [end];
@@ -127,19 +135,19 @@ button {
 
 #g-box{
     grid-column: first-column / second-column;
-    grid-row: third-row / end;  
+    grid-row: third-row / end;
 }
 
 #h-box{
     border-right: 0.3125rem solid white;
     border-left: 0.3125rem solid white;
     grid-column: second-column / third-column;
-    grid-row: third-row / end;  
+    grid-row: third-row / end;
 }
 
 #i-box{
     grid-column: third-column / end;
-    grid-row: third-row / end;  
+    grid-row: third-row / end;
 }
 
 @media only screen and (max-width: 800px){
@@ -157,7 +165,7 @@ button {
         grid-template-columns: [first-column] 6.875rem [second-column] 6.875rem [third-column] 6.875rem [end];
         grid-template-rows: [first-row] 6.875rem [second-row] 6.875rem [third-row] 6.875rem [end];
     }
-    
+
 
     img {
         max-width: 50%;
@@ -167,6 +175,3 @@ button {
         font-size: 1.25rem;
     }
 }
-
-
-

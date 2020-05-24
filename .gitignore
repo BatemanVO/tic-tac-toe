@@ -1,2 +1,3 @@
 # Directories and files for testing, used locally but ignored as part of the contribution to the main project repo
 node_modules
+coverage

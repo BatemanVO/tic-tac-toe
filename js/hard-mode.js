@@ -88,11 +88,11 @@ var HardMode = {};
             return centerSpace;
         }
 
-        var emptyCornerSelectors = ['a-box', 'c-box', 'g-box', 'i-box'].map(function(id) {
-            return '#' + id + '.' + EMPTY_SPACE_CLASS;
+        var emptyCornerSelectors = ['a', 'c', 'g', 'i'].map(function(id) {
+            return '#' + id + '-box.' + EMPTY_SPACE_CLASS;
         });
         var emptyCorner = document.querySelector(emptyCornerSelectors.toString());
-        if (emptyCorner) {
+        if (emptyCorner !== null) {
             return emptyCorner;
         }
 

@@ -25,8 +25,12 @@ var HardMode = {};
    HardMode.isEnabled = false;
 
     /**
-    * Gets all empty spaces on the board and checks if any of them are the last space needed to make a winning move.
-    * If so, returns the winning space's element Id. Otherwise, returns undefined.
+    * Gets all empty spaces on the board, then checks each winning combination.
+    * If two empty spaces are found, move on to the next combination.
+    * If one empty space is found and the other two spaces are occupied by different markers, move on.
+    * If one empty space is found and the other two spaces are occupied by the same marker, return the empty Id, since
+    * that is the winning move - either for the computer to win now, or to block the player from winning on their next
+    * turn.
     */
     HardMode.getWinningId = function() {
         var emptyIds = Array.from(document.querySelectorAll('.' + EMPTY_SPACE_CLASS)).map(function(emptySpace) {
@@ -35,26 +39,26 @@ var HardMode = {};
         var markerById = {};
         for (var i = 0; i < WINNING_COMBINATIONS.length; i++) {
             var occupiedCount = 0;
-            var occupiedMarker;
+            var firstOccupiedSpaceMarker = null;
             var possibleWinningId = null;
             var winningCombination = WINNING_COMBINATIONS[i];
             for (var j = 0; j < winningCombination.length; j++) {
                 var spaceId = winningCombination[j];
                 if (emptyIds.includes(spaceId)) {
-                    if (possibleWinningId) {
-                        continue;
+                    if (possibleWinningId !== null) {
+                        break;
                     }
                     possibleWinningId = spaceId;
                 } else {
                     var occupyingMarker = markerById[spaceId];
-                    if (!occupyingMarker) {
+                    if (occupyingMarker === undefined) {
                         occupyingMarker = document.getElementById(spaceId).className;
                         markerById[spaceId] = occupyingMarker;
                     }
                     if (occupiedCount === 0) {
-                        occupiedMarker = occupyingMarker;
+                        firstOccupiedSpaceMarker = occupyingMarker;
                         occupiedCount = 1;
-                    } else if (occupiedMarker === occupyingMarker) {
+                    } else if (firstOcupiedSpaceMarker === occupyingMarker) {
                         occupiedCount = 2;
                     }
                 }
@@ -105,5 +109,7 @@ var HardMode = {};
     };
 
     document.querySelector('.toggle-button').addEventListener('click', HardMode.toggleEnabled);
+    // Needed for testing via Node libraries - module object is defined in a script tag above this one in the markup
+    // to prevent errors from being thrown
     module.exports = HardMode;
 })();

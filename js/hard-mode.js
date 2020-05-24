@@ -46,6 +46,7 @@ var HardMode = {};
                 var spaceId = winningCombination[j];
                 if (emptyIds.includes(spaceId)) {
                     if (possibleWinningId !== null) {
+                        possibleWinningId = null;
                         break;
                     }
                     possibleWinningId = spaceId;
@@ -58,6 +59,7 @@ var HardMode = {};
                     if (firstOccupiedSpaceMarker === null) {
                         firstOccupiedSpaceMarker = occupyingMarker;
                     } else if (firstOccupiedSpaceMarker !== occupyingMarker) {
+                        possibleWinningId = null;
                         break;
                     }
                 }

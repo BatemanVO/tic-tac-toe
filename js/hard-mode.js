@@ -64,7 +64,7 @@ var HardMode = {};
                     }
                 }
             }
-            if (possibleWinningId) {
+            if (possibleWinningId !== null) {
                 return possibleWinningId;
             }
         }

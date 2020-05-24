@@ -14,11 +14,8 @@ describe('HardMode', () => {
         toggleContainer.className = 'toggle-container hide';
         const toggleDiv = document.createElement('div');
         toggleDiv.className = 'hard-mode-toggle';
-        const toggleFill = document.createElement('toggle-fill');
-        toggleFill.className = 'toggle-fill';
         const toggleButton = document.createElement('toggle-button');
         toggleButton.className = 'toggle-button';
-        toggleDiv.appendChild(toggleFill);
         toggleDiv.appendChild(toggleButton);
         toggleContainer.appendChild(toggleDiv);
         document.body.appendChild(toggleContainer);
@@ -142,14 +139,14 @@ describe('HardMode', () => {
         describe('Once', () => {
             it(
                 'Should set isEnabled to true, add the enabled class to the toggle-button, and add the fill-enabled' +
-                ' class to the toggle-fill element',
+                ' class to the hard-mode-toggle element',
                 () => {
                     HardMode.isEnabled = false;
                     const toggleButton = document.body.querySelector('.toggle-button');
                     HardMode.toggleEnabled({ target: toggleButton });
                     expect(HardMode.isEnabled).toBe(true);
                     expect(toggleButton.classList).toContain('enabled');
-                    expect(document.body.querySelector('.toggle-fill').classList).toContain('fill-enabled');
+                    expect(document.body.querySelector('.hard-mode-toggle').classList).toContain('fill-enabled');
                 }
             );
         });
@@ -157,7 +154,7 @@ describe('HardMode', () => {
         describe('Twice', () => {
             it(
                 'Should set isEnabled to false, remove the enabled class to the toggle-button, and remove the' +
-                ' fill-enabled class to the toggle-fill element',
+                ' fill-enabled class to the hard-mode-toggle element',
                 () => {
                     HardMode.isEnabled = false;
                     const toggleButton = document.body.querySelector('.toggle-button');
@@ -165,7 +162,7 @@ describe('HardMode', () => {
                     HardMode.toggleEnabled({ target: toggleButton });
                     expect(toggleButton.classList).not.toContain('enabled');
                     expect(HardMode.isEnabled).toBe(false);
-                    expect(document.body.querySelector('.toggle-fill').classList).not.toContain('fill-enabled');
+                    expect(document.body.querySelector('.hard-mode-toggle').classList).not.toContain('fill-enabled');
                 }
             );
         });

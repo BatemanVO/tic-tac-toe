@@ -20,9 +20,9 @@ var HardMode = {};
         ['c-box', 'f-box', 'i-box'],
         ['a-box', 'e-box', 'i-box'],
         ['c-box', 'e-box', 'g-box']
-   ];
+    ];
 
-   HardMode.isEnabled = false;
+    HardMode.isEnabled = false;
 
     /**
     * Gets all empty spaces on the board, then checks each winning combination.
@@ -103,6 +103,12 @@ var HardMode = {};
         document.querySelector('.toggle-container').classList.toggle('hide');
     };
 
+    /**
+    * This method should be private, however, in tests, the DOM is stripped down after each test and the click listener
+    * is lost, unless we add the event listener again at the beginning of each test. However, we should not have
+    * implementation code repeated in testing code, so instead, this method was made public so that we can simulate
+    * the click listener being called by calling this method directly.
+    */
     HardMode.toggleEnabled = function(event) {
         event.target.classList.toggle('enabled');
         HardMode.isEnabled = !HardMode.isEnabled;

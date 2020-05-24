@@ -58,7 +58,7 @@ var HardMode = {};
                     if (occupiedCount === 0) {
                         firstOccupiedSpaceMarker = occupyingMarker;
                         occupiedCount = 1;
-                    } else if (firstOcupiedSpaceMarker === occupyingMarker) {
+                    } else if (firstOccupiedSpaceMarker === occupyingMarker) {
                         occupiedCount = 2;
                     }
                 }
